@@ -7,9 +7,10 @@ export default function HomeScreen() {
       <Text className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
         {t("home.welcomeTitle")}
       </Text>
-      <Text className="text-lg text-gray-600 dark:text-gray-300">
+      <Text className="text-lg text-gray-600 dark:text-gray-300 text-center">
         {t("home.welcomeSubtitle")}
       </Text>
     </View>
   );
 }
+

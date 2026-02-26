@@ -52,3 +52,4 @@ export const translations: Record<Language, Record<string, string>> = {
     "home.welcomeSubtitle": "जोर से पढ़कर बच्चों की अभिव्यंजक शक्ति को बढ़ावा देना।",
   },
 };
+

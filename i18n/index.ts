@@ -6,10 +6,14 @@ const SUPPORTED: Language[] = ["ja", "en", "zh", "ko", "es", "fr", "de", "pt", "
 function getLanguage(): Language {
   try {
     const locales = Localization.getLocales();
+    // Ensure locales[0] exists before accessing languageCode
     const deviceLang = locales[0]?.languageCode ?? "ja";
-    if (SUPPORTED.includes(deviceLang as Language)) return deviceLang as Language;
+    if (SUPPORTED.includes(deviceLang as Language)) {
+      return deviceLang as Language;
+    }
     return "ja";
-  } catch {
+  } catch (error) {
+    console.error("Error getting device language:", error);
     return "ja";
   }
 }
@@ -19,7 +23,8 @@ export const isRTL = ["ar"].includes(lang);
 
 export function t(key: string, vars?: Record<string, string | number>): string {
   const dict = translations[lang] ?? translations.ja;
-  let text = dict[key] ?? translations.ja[key] ?? key;
+  // Fallback to English if key not found in current language or Japanese
+  let text = dict[key] ?? translations.ja[key] ?? translations.en[key] ?? key;
   if (vars) {
     for (const [k, v] of Object.entries(vars)) {
       text = text.replace(new RegExp(`{{\\s*${k}\\s*}}`, "g"), String(v));
@@ -27,3 +32,4 @@ export function t(key: string, vars?: Record<string, string | number>): string {
   }
   return text;
 }
+

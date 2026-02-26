@@ -1,0 +1,9 @@
+{
+  "common": {
+    "appName": "Yomerun"
+  },
+  "home": {
+    "welcomeTitle": "Bem-vindo ao Yomerun!",
+    "welcomeSubtitle": "Promovendo a capacidade expressiva das crianças através da leitura em voz alta."
+  }
+}

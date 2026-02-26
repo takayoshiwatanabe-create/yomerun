@@ -1,0 +1,9 @@
+{
+  "common": {
+    "appName": "Yomerun"
+  },
+  "home": {
+    "welcomeTitle": "Bienvenue sur Yomerun !",
+    "welcomeSubtitle": "Développer la capacité d'expression des enfants par la lecture à voix haute."
+  }
+}

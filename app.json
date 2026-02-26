@@ -26,19 +26,20 @@
     },
     "plugins": [
       "expo-router",
-      "expo-localization"
+      "expo-localization",
+      "expo-font"
     ],
     "locales": {
-      "ja": "./locales/ja.json",
-      "en": "./locales/en.json",
-      "zh": "./locales/zh.json",
-      "ko": "./locales/ko.json",
-      "es": "./locales/es.json",
-      "fr": "./locales/fr.json",
-      "de": "./locales/de.json",
-      "pt": "./locales/pt.json",
-      "ar": "./locales/ar.json",
-      "hi": "./locales/hi.json"
+      "ja": "./messages/ja.json",
+      "en": "./messages/en.json",
+      "zh": "./messages/zh.json",
+      "ko": "./messages/ko.json",
+      "es": "./messages/es.json",
+      "fr": "./messages/fr.json",
+      "de": "./messages/de.json",
+      "pt": "./messages/pt.json",
+      "ar": "./messages/ar.json",
+      "hi": "./messages/hi.json"
     }
   }
 }

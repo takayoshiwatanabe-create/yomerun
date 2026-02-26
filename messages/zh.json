@@ -1,0 +1,9 @@
+{
+  "common": {
+    "appName": "Yomerun"
+  },
+  "home": {
+    "welcomeTitle": "欢迎来到Yomerun！",
+    "welcomeSubtitle": "通过朗读培养孩子的表达能力。"
+  }
+}

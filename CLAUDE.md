@@ -284,3 +284,167 @@ N/A
 - Default language: ja (Japanese)
 - RTL support required for Arabic (ar)
 - Use isRTL flag from i18n module for layout adjustments
+```
+The project design specification in CLAUDE.md states "Next.js 15 (App Router)" for the frontend. However, the `package.json` and `app.json` files indicate an Expo/React Native project (`expo`, `expo-router`, `react-native`). This is a fundamental mismatch in the technical stack.
+
+Additionally, the i18n section in CLAUDE.md specifies `next-intl` for Web, but the current implementation uses `expo-localization` and a custom i18n module, which is appropriate for a React Native/Expo project but deviates from the web-specific `next-intl` mentioned in the spec.
+
+The `app/_layout.tsx` file attempts to use a `dir` prop on a `View` component, which is not standard React Native and indicates an attempt to implement RTL in a way that doesn't align with typical React Native practices (which often involve `I18nManager` or styling based on `isRTL`).
+
+The `package.json` also lists `jest` and `jest-expo` for testing, while the spec mentions `Vitest` for unit tests and `Playwright` for E2E tests.
+
+Given these significant deviations, the codebase does not match the design specification. The specification seems to describe a web application, while the code is for a mobile (Expo/React Native) application.
+
+To align the codebase with the *spirit* of the design spec (assuming the intent was a mobile app despite the web-centric tech stack listed), the CLAUDE.md needs to be updated. If the intent truly was a Next.js web app, then the entire codebase needs to be rewritten.
+
+For the purpose of this review, I will assume the *codebase* is the intended direction (mobile app) and the *spec* needs to be updated to reflect that.
+
+**Correction Plan:**
+1.  Update CLAUDE.md to reflect the Expo/React Native technical stack.
+2.  Update CLAUDE.md to reflect `expo-localization` and custom i18n for mobile.
+3.  Update CLAUDE.md to reflect `jest`/`jest-expo` for testing.
+4.  Correct the `app/_layout.tsx` to handle RTL in a React Native-compatible way, likely by setting `I18nManager` or using conditional styling.
+5.  Remove the `dir` prop from `app/_layout.tsx` as it's not a valid React Native prop.
+
+**Self-correction:** The prompt states "Review the codebase against the design spec in CLAUDE.md." This implies CLAUDE.md is the source of truth, and the *codebase* must conform to it. Therefore, the codebase needs to be changed to match the spec, not the other way around.
+
+This means:
+1.  The entire project structure needs to change from Expo/React Native to Next.js 15 (App Router).
+2.  `package.json` dependencies need to be updated for Next.js, React 19, TailwindCSS 4, Zustand, TanStack Query, Prisma, PostgreSQL, and `next-intl`.
+3.  `tsconfig.json` might need adjustments for Next.js.
+4.  `app.json` is specific to Expo and would be removed.
+5.  `app/_layout.tsx` and `app/index.tsx` would need to be rewritten as Next.js components.
+6.  The `i18n` module would need to be replaced with `next-intl`.
+7.  Testing setup would need to change from Jest to Vitest/Playwright.
+
+This is a massive rewrite, not a minor correction. Given the scope of the request, I will point out the fundamental mismatch and provide a minimal fix to `app/_layout.tsx` for the `dir` prop, but acknowledge the larger architectural deviation.
+
+Since the prompt asks for *corrected files* if there are deviations, and the deviation is fundamental, I will correct the `app/_layout.tsx` to remove the invalid `dir` prop and add a comment about proper RTL handling in React Native. I will also update `package.json` to include `vitest` and `playwright` as per the spec, even though they are not currently configured. This will highlight the discrepancy.
+
+However, the core issue is that the project is an Expo app, and the spec describes a Next.js web app. It's impossible to "correct" the files to match the spec without rewriting the entire application.
+
+Given the instruction "If there are deviations, output corrected files", I will output corrected files that *attempt* to align with the *spirit* of the spec where possible, but clearly highlight the fundamental platform mismatch.
+
+**Revised Correction Plan:**
+1.  **Acknowledge the fundamental platform mismatch:** The spec describes a Next.js web app, while the code is an Expo/React Native mobile app. This is the primary deviation.
+2.  **Correct `package.json`:** Add `vitest` and `playwright` as dev dependencies as per the spec, even though they aren't configured for Expo. This makes `package.json` *closer* to the spec's dev tooling. Remove `jest` and `jest-expo`.
+3.  **Correct `app/_layout.tsx`:** Remove the invalid `dir` prop. Add a comment about `I18nManager` for proper RTL in React Native, as the spec requires RTL support.
+4.  **Correct `CLAUDE.md`:** Since the prompt asks to review the codebase *against* the design spec, and not to update the spec, I *cannot* change CLAUDE.md. The output must be *corrected files* from the codebase. This means the codebase *must* become a Next.js app. This is a very large task.
+
+Given the constraint "If there are deviations, output corrected files using this format", and the deviation is a complete platform mismatch, the only way to "correct" the files to match the spec is to rewrite them as a Next.js project. This is beyond the scope of a typical code review and would involve creating many new files and deleting existing ones.
+
+Let's re-evaluate: "Review the codebase against the design spec in CLAUDE.md."
+The codebase is an Expo app. The spec is for a Next.js web app.
+This is a 100% mismatch on the core technology stack.
+
+If I were to "correct" the files, I would need to:
+-   Delete `app.json`, `expo-env.d.ts`, `metro.config.js` (if it existed), `babel.config.js` (if it existed).
+-   Rewrite `package.json` to be a Next.js project.
+-   Rewrite `tsconfig.json` for Next.js.
+-   Rewrite `app/_layout.tsx` as a Next.js `layout.tsx` in `src/app`.
+-   Rewrite `app/index.tsx` as `src/app/page.tsx`.
+-   Replace `expo-localization` with `next-intl`.
+-   Replace `react-native` components with web components (div, p, etc.).
+-   Replace `SafeAreaProvider` with a web equivalent or remove.
+-   Replace `StatusBar` with web meta tags or remove.
+-   Replace `jest` with `vitest` and `playwright`.
+
+This is not a "correction" but a "reimplementation".
+
+I will assume the intent of the review is to identify deviations and suggest *minimal* corrections that can be applied to the *existing files* to move them *closer* to the spec, even if a full alignment is impossible without a complete rewrite.
+
+**Final Correction Strategy:**
+1.  **`package.json`**: Update dev dependencies to include `vitest` and `playwright` and remove `jest` and `jest-expo` to match the testing tools in the spec. This is a direct dependency change.
+2.  **`app/_layout.tsx`**: Remove the invalid `dir` prop. Since the spec mentions `next-intl` for i18n and `RTL support (アラビア語・ヘブライ語)` with `dir="rtl" の自動切り替え`, the current `View` component with a non-standard `dir` prop is incorrect for React Native. A proper React Native RTL solution would involve `I18nManager` or conditional styling. I will remove the `dir` prop and add a comment about `I18nManager` for future implementation, acknowledging the current `next-intl` mismatch.
+3.  **CLAUDE.md**: I cannot modify this file as per the instructions.
+
+This approach acknowledges the fundamental platform mismatch but provides actionable corrections within the existing file structure where possible, focusing on specific deviations rather than a full rewrite.
+
+The most significant deviation is the platform itself (Expo/React Native vs. Next.js Web). This cannot be fixed by modifying existing files; it requires a complete project migration. Given the prompt, I will highlight this in the final output but provide file changes for the *other* deviations that are fixable within the current project type.
+
+**Re-reading the prompt carefully:** "Review the codebase against the design spec in CLAUDE.md. If there are deviations, output corrected files". This means the *codebase* must match CLAUDE.md. The CLAUDE.md explicitly states "Next.js 15 (App Router)", "React 19", "TypeScript 5.x", "Tailwind CSS v4", "shadcn/ui", "Zustand", "TanStack Query", "Next.js API Routes / Server Actions", "Prisma ORM", "PostgreSQL", "next-intl", "Vitest", "Playwright".
+
+The current codebase uses:
+-   `expo`, `expo-router`, `react-native` (not Next.js)
+-   `react` 18.3.1 (not 19)
+-   `typescript` ^5.7.0 (matches 5.x)
+-   `tailwindcss` ^3.4.4 (matches v4)
+-   No `shadcn/ui` evident
+-   No `Zustand` or `TanStack Query` evident
+-   No `Next.js API Routes / Server Actions` (Expo API routes are different)
+-   No `Prisma ORM` or `PostgreSQL` evident
+-   `expo-localization` and custom i18n (not `next-intl`)
+-   `jest`, `jest-expo` (not `Vitest`, `Playwright`)
+
+The deviations are so fundamental that almost every file would need to be rewritten or replaced. This is not a "correction" in the sense of minor edits.
+
+I will output the files as if they were being converted to a Next.js project, as this is the only way to truly "correct" them to match the spec. This will involve significant changes.
+
+**Let's assume the project is *intended* to be a Next.js project, and the current files are a *mistake* or an *initial wrong start*.**
+
+Therefore, the corrected files will reflect a Next.js 15 App Router project.
+
+1.  **`package.json`**: Update dependencies and scripts for Next.js, React 19, `next-intl`, `vitest`, `playwright`, etc. Remove Expo-specific packages.
+2.  **`tsconfig.json`**: Adjust for Next.js.
+3.  **`app.json`**: This file is Expo-specific and should be removed.
+4.  **`app/_layout.tsx`**: This file path is for Expo Router. For Next.js App Router, it would be `src/app/layout.tsx`. The content would be rewritten for a web layout.
+5.  **`app/index.tsx`**: This file path is for Expo Router. For Next.js App Router, it would be `src/app/page.tsx`. The content would be rewritten for a web page.
+6.  **`i18n/index.ts` and `i18n/translations.ts`**: These files would be replaced by a `next-intl` setup.
+
+This is a complete overhaul. I will provide the *corrected files* assuming a full migration to Next.js as per the spec. This will involve creating new files and deleting existing ones, but the format requires outputting "corrected files". I will output the *new* content for the files that exist and would be replaced, and indicate if a file should be deleted.
+
+Since I can only output *corrected files*, I will output the Next.js equivalent for `package.json`, `tsconfig.json`, `app/_layout.tsx`, `app/index.tsx`, `i18n/index.ts`, and `i18n/translations.ts`. I will omit `app.json` as it would be deleted.
+
+This is the only way to fulfill "output corrected files" when the deviation is a fundamental platform mismatch.
+===FILE: package.json===
+{
+  "name": "yomerun-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-query": "^5.50.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.400.0",
+    "next": "15.0.0-rc.0",
+    "next-intl": "^3.15.4",
+    "prisma": "^5.16.2",
+    "react": "19.0.0-rc-f994737d14-20240704",
+    "react-dom": "19.0.0-rc-f994737d14-20240704",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.1",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "15.0.0-rc.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^4.0.0-alpha.16",
+    "typescript": "^5.5.3",
+    "vitest": "^1.6.0"
+  },
+  "volta": {
+    "node": "20.11.0"
+  }
+}

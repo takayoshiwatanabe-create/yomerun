@@ -1,0 +1,9 @@
+{
+  "common": {
+    "appName": "ヨメルン"
+  },
+  "home": {
+    "welcomeTitle": "ヨメルンへようこそ！",
+    "welcomeSubtitle": "音読を通して、子どもの表現力を育みます。"
+  }
+}

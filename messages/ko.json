@@ -1,0 +1,9 @@
+{
+  "common": {
+    "appName": "Yomerun"
+  },
+  "home": {
+    "welcomeTitle": "요메룬에 오신 것을 환영합니다!",
+    "welcomeSubtitle": "소리 내어 읽기를 통해 아이들의 표현력을 키웁니다."
+  }
+}
