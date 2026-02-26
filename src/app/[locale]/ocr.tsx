@@ -1,3 +1,4 @@
+```typescript
 "use client";
 
 import React, { useState, useCallback, useMemo } from "react";
@@ -5,13 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Upload, ScanText, CheckCircle, XCircle } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils"; // Utility for conditional class names
+import { useTranslations, useLocale } from "next-intl";
+import { cn } from "@/lib/utils";
 
 type OCRStatus = "idle" | "uploading" | "processing" | "completed" | "error";
 
 export default function OCRScreen() {
   const t = useTranslations("ocr");
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
   const [status, setStatus] = useState<OCRStatus>("idle");
   const [progress, setProgress] = useState(0);
   const [ocrResult, setOcrResult] = useState<string | null>(null);
@@ -23,7 +27,7 @@ export default function OCRScreen() {
     if (file) {
       setSelectedImage(file);
       setImagePreviewUrl(URL.createObjectURL(file));
-      setStatus("idle"); // Reset status when a new image is selected
+      setStatus("idle");
       setOcrResult(null);
       setProgress(0);
     }
@@ -47,7 +51,7 @@ export default function OCRScreen() {
       currentProgress += 10;
       if (currentProgress >= 90) {
         clearInterval(interval);
-        currentProgress = 90; // Cap progress before completion
+        currentProgress = 90;
       }
       setProgress(currentProgress);
     }, 500);
@@ -59,7 +63,7 @@ export default function OCRScreen() {
     clearInterval(interval);
     setProgress(100);
     setStatus("completed");
-    setOcrResult(t("sampleOcrText")); // Replace with actual OCR result
+    setOcrResult(t("sampleOcrText"));
   }, [selectedImage, t]);
 
   const renderStatusContent = useMemo(() => {
@@ -67,7 +71,7 @@ export default function OCRScreen() {
       case "idle":
         return (
           <>
-            <Upload className="h-12 w-12 text-blue-500 mb-4" />
+            <Upload className={cn("h-12 w-12 text-blue-500 mb-4", isRTL && "transform scale-x-[-1]")} />
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-4 text-center">
               {selectedImage ? t("imageSelected") : t("selectImagePrompt")}
             </p>
@@ -78,7 +82,7 @@ export default function OCRScreen() {
                 aria-label={t("startOcr")}
                 style={{ minWidth: "44px", minHeight: "44px" }}
               >
-                <ScanText className="mr-2 h-5 w-5" />
+                <ScanText className={cn("h-5 w-5", isRTL ? "ml-2" : "mr-2")} />
                 {t("startOcr")}
               </Button>
             )}
@@ -88,7 +92,7 @@ export default function OCRScreen() {
       case "processing":
         return (
           <>
-            <ScanText className="h-12 w-12 text-green-500 mb-4 animate-pulse" />
+            <ScanText className={cn("h-12 w-12 text-green-500 mb-4 animate-pulse", isRTL && "transform scale-x-[-1]")} />
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-4 text-center">
               {status === "uploading" ? t("uploadingImage") : t("processingImage")}
             </p>
@@ -149,7 +153,7 @@ export default function OCRScreen() {
       default:
         return null;
     }
-  }, [status, progress, ocrResult, selectedImage, simulateOCRProcess, t]);
+  }, [status, progress, ocrResult, selectedImage, simulateOCRProcess, t, isRTL]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-6 bg-white dark:bg-gray-900">
@@ -165,6 +169,7 @@ export default function OCRScreen() {
         <CardContent className="flex flex-col items-center justify-center mt-6">
           <div className="relative w-full max-w-xs h-48 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center overflow-hidden mb-6">
             {imagePreviewUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={imagePreviewUrl}
                 alt={t("selectedImageAlt")}
@@ -193,8 +198,8 @@ export default function OCRScreen() {
             disabled={status === "processing" || status === "uploading"}
             style={{ minWidth: "44px", minHeight: "44px" }}
           >
-            <label htmlFor="image-upload" className="flex items-center justify-center cursor-pointer">
-              <Upload className="mr-2 h-5 w-5" />
+            <label htmlFor="image-upload" className={cn("flex items-center justify-center cursor-pointer", isRTL && "flex-row-reverse")}>
+              <Upload className={cn("h-5 w-5", isRTL ? "ml-2 transform scale-x-[-1]" : "mr-2")} />
               {t("selectImage")}
             </label>
           </Button>
@@ -207,3 +212,4 @@ export default function OCRScreen() {
     </div>
   );
 }
+```

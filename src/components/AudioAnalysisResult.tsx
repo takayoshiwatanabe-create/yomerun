@@ -1,9 +1,10 @@
+```typescript
 "use client";
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Star, Volume2, Lightbulb } from "lucide-react";
-import { useTranslations, useLocale } from "next-intl"; // Import useLocale
+import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 
 interface WordAnalysis {
@@ -25,8 +26,8 @@ interface AudioAnalysisResultProps {
 
 export function AudioAnalysisResult({ analysis, isLoading, error }: AudioAnalysisResultProps) {
   const t = useTranslations("audioAnalysis");
-  const locale = useLocale(); // Get the current locale
-  const isRTL = locale === 'ar'; // Determine if current locale is RTL
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   if (isLoading) {
     return (
@@ -61,13 +62,13 @@ export function AudioAnalysisResult({ analysis, isLoading, error }: AudioAnalysi
   }
 
   if (!analysis) {
-    return null; // Or a prompt to start recording
+    return null;
   }
 
   const getWordColor = (isCorrect: boolean, confidence: number) => {
     if (isCorrect && confidence >= 80) return "text-green-600 dark:text-green-400";
     if (isCorrect && confidence >= 50) return "text-yellow-600 dark:text-yellow-400";
-    return "text-orange-600 dark:text-orange-400"; // Changed from red to orange for less negative connotation
+    return "text-orange-600 dark:text-orange-400";
   };
 
   return (
@@ -94,7 +95,6 @@ export function AudioAnalysisResult({ analysis, isLoading, error }: AudioAnalysi
             </h3>
             <div className={cn(
               "flex flex-wrap gap-2",
-              // RTL adjustment for word flow
               isRTL ? 'flex-row-reverse' : 'flex-row'
             )}>
               {analysis.words.map((item, index) => (
@@ -104,7 +104,7 @@ export function AudioAnalysisResult({ analysis, isLoading, error }: AudioAnalysi
                     "px-3 py-1 rounded-full text-sm font-medium",
                     item.isCorrect && item.confidence >= 80 ? "bg-green-100 dark:bg-green-900" :
                     item.isCorrect && item.confidence >= 50 ? "bg-yellow-100 dark:bg-yellow-900" :
-                    "bg-orange-100 dark:bg-orange-900", // Changed from red to orange for less negative connotation
+                    "bg-orange-100 dark:bg-orange-900",
                     getWordColor(item.isCorrect, item.confidence)
                   )}
                   aria-label={`${item.word}: ${item.isCorrect ? t("correct") : t("incorrect")}, ${t("confidence", { confidence: item.confidence })}`}
@@ -123,7 +123,7 @@ export function AudioAnalysisResult({ analysis, isLoading, error }: AudioAnalysi
           )}>
             <Lightbulb className={cn(
               "h-6 w-6 text-blue-600 dark:text-blue-400 mt-1",
-              isRTL ? 'ml-3' : 'mr-3' // Use logical properties if Tailwind v4 supports them directly, otherwise this is a reasonable fallback.
+              isRTL ? 'ml-3 transform scale-x-[-1]' : 'mr-3' // Flip icon for RTL
             )} />
             <div>
               <h4 className="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-1">
@@ -146,3 +146,4 @@ export function AudioAnalysisResult({ analysis, isLoading, error }: AudioAnalysi
     </Card>
   );
 }
+```

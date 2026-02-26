@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "../../global.css"; // Import global CSS for Tailwind
+import { translations } from "@/i18n/translations"; // Import translations to get locale list
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
   description: "Fostering children's expressive power through reading aloud.",
 };
 
-const locales = ["ja", "en", "zh", "ko", "es", "fr", "de", "pt", "ar", "hi"];
+// Use the keys from the translations object as the source of truth for supported locales
+const locales = Object.keys(translations);
 
 export default async function RootLayout({
   children,
@@ -26,7 +28,7 @@ export default async function RootLayout({
 
   const messages = await getMessages({ locale });
 
-  const isRTL = locale === "ar";
+  const isRTL = locale === 'ar';
 
   return (
     <html lang={locale} dir={isRTL ? "rtl" : "ltr"}>
@@ -39,6 +41,3 @@ export default async function RootLayout({
   );
 }
 ```
-**Deviation:** The `CLAUDE.md` specifies "RTL規則: CSSの左右マージン/パディングは logical properties使用 （margin-left → margin-inline-start）". While the `dir="rtl"` is correctly applied to the `<html>` tag, this is a general rule that needs to be enforced throughout the CSS, not just in this layout file. This file itself doesn't directly apply CSS properties that would violate this, but it sets the stage for it. The review task specifically asks about "styling matches the spec".
-
-**Correction:** This file correctly sets the `dir` attribute on the `<html>` tag, which is the first step for RTL support. The enforcement of logical properties in CSS is a broader styling concern that would be checked in component-specific CSS or Tailwind configuration, not directly in this layout file. No direct correction needed here, but it's a point to keep in mind for other components.

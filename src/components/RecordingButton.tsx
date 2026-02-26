@@ -1,9 +1,10 @@
+```typescript
 "use client";
 
 import React from "react";
 import { Button } from "@/components/ui/button"; // Assuming shadcn/ui Button component
 import { Mic, StopCircle } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl"; // Import useLocale
 import { cn } from "@/lib/utils"; // Utility for conditional class names
 
 interface RecordingButtonProps {
@@ -20,6 +21,8 @@ export function RecordingButton({
   disabled = false,
 }: RecordingButtonProps) {
   const t = useTranslations("recording");
+  const locale = useLocale(); // Get current locale
+  const isRTL = locale === 'ar'; // Check if it's an RTL language
 
   const handleClick = () => {
     if (isRecording) {
@@ -56,10 +59,11 @@ export function RecordingButton({
         </>
       ) : (
         <>
-          <Mic className="h-8 w-8 text-white" />
+          <Mic className={cn("h-8 w-8 text-white", isRTL && "transform scale-x-[-1]")} /> {/* Apply RTL flip */}
           <span className="sr-only">{t("startRecording")}</span>
         </>
       )}
     </Button>
   );
 }
+```
