@@ -9,4 +9,3 @@
  interface I18nContextType {
    t: (key: string, variables?: Record<string, string | number>) => string;
 ```
-

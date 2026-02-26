@@ -1,1 +1,13 @@
-null
+```diff
+--- a/app.json
++++ b/app.json
+@@ -1,5 +1,5 @@
+ {
+   "expo": {
+     "name": "Yomerun",
+-    "slug": "Yomerun"
++    "slug": "Yomerun",
++    "scheme": "yomerun"
+   }
+ }
+```
