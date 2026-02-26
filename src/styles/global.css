@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  RTL (Right-to-Left) support for web.
+  For React Native, `direction: isRTL ? 'rtl' : 'ltr'` is applied directly to View components.
+*/
+
+/* Base styles for HTML body to handle global text direction */
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="ltr"] body {
+  direction: ltr;
+  text-align: left;
+}
+
+/*
+  Logical properties for margins and paddings.
+  These automatically adjust based on `direction` or `writing-mode`.
+  Tailwind CSS v4 is expected to handle this more natively,
+  but for explicit cases or older versions, these can be useful.
+*/
+/*
+  Tailwind CSS v4 uses logical properties by default for margin/padding.
+  Explicit classes like `margin-inline-start` are generally not needed
+  if using Tailwind's `ms-*`, `me-*`, `ps-*`, `pe-*` utilities.
+  Keeping these comments for reference but removing explicit CSS rules
+  to avoid conflict and rely on Tailwind's approach.
+*/
+
+/*
+.margin-inline-start {
+  margin-inline-start: var(--tw-margin-inline-start, 0);
+}
+
+.margin-inline-end {
+  margin-inline-end: var(--tw-margin-inline-end, 0);
+}
+
+.padding-inline-start {
+  padding-inline-start: var(--tw-padding-inline-start, 0);
+}
+
+.padding-inline-end {
+  padding-inline-end: var(--tw-padding-inline-end, 0);
+}
+*/
+
+/*
+  Icon flipping for RTL.
+  Apply this class to icons that should be horizontally flipped in RTL contexts.
+  Example: <ChevronRight className="flip-on-rtl" />
+*/
+.flip-on-rtl {
+  [dir="rtl"] & {
+    transform: scaleX(-1);
+  }
+}
+
+/*
+  Specific text alignment for inputs in RTL.
+  While `text-align: right` is generally applied to the body in RTL,
+  inputs might need explicit handling or can inherit.
+  For React Native, `textAlign: isRTL ? 'right' : 'left'` is applied directly.
+*/
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  [dir="rtl"] & {
+    text-align: right;
+  }
+  [dir="ltr"] & {
+    text-align: left;
+  }
+}
+
+/*
+  Ensure scrollbars are on the left in RTL if needed,
+  though modern browsers handle this automatically.
+*/
+/*
+html[dir="rtl"] {
+  scrollbar-gutter: stable both-edges;
+}
+*/
