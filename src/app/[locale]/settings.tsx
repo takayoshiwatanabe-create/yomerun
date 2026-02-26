@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'; // Explicitly import React
+import React from 'react';
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import {
@@ -56,7 +56,7 @@ export default function SettingsScreen() {
               {t("changePasswordTitle")}
               <ChevronRight className={cn(
                 "h-5 w-5",
-                isRTL ? "ml-2 transform rotate-180" : "mr-2" // Rotate for RTL
+                isRTL ? "ml-2 transform rotate-180" : "mr-2"
               )} />
             </Button>
             <Button
@@ -68,7 +68,7 @@ export default function SettingsScreen() {
               {t("manageProfileTitle")}
               <ChevronRight className={cn(
                 "h-5 w-5",
-                isRTL ? "ml-2 transform rotate-180" : "mr-2" // Rotate for RTL
+                isRTL ? "ml-2 transform rotate-180" : "mr-2"
               )} />
             </Button>
           </div>
@@ -96,11 +96,11 @@ export default function SettingsScreen() {
               className={cn("w-full justify-between py-3 px-4 text-lg", isRTL && "flex-row-reverse")}
               aria-label={t("parentInfoTitle")}
               style={{ minWidth: "44px", minHeight: "44px" }}
-            > {/* ChevronRight is a directional icon, it should be mirrored in RTL */}
+            >
               {t("viewDetails")}
               <ChevronRight className={cn(
                 "h-5 w-5",
-                isRTL ? "ml-2 transform rotate-180" : "mr-2" // Rotate for RTL
+                isRTL ? "ml-2 transform rotate-180" : "mr-2"
               )} />
             </Button>
           </div>
@@ -137,11 +137,11 @@ export default function SettingsScreen() {
               className={cn("w-full justify-between py-3 px-4 text-lg", isRTL && "flex-row-reverse")}
               aria-label={t("privacyPolicyTitle")}
               style={{ minWidth: "44px", minHeight: "44px" }}
-            > {/* ChevronRight is a directional icon, it should be mirrored in RTL */}
+            >
               {t("viewDetails")}
               <ChevronRight className={cn(
                 "h-5 w-5",
-                isRTL ? "ml-2 transform rotate-180" : "mr-2" // Rotate for RTL
+                isRTL ? "ml-2 transform rotate-180" : "mr-2"
               )} />
             </Button>
             <Button
@@ -149,11 +149,11 @@ export default function SettingsScreen() {
               className={cn("w-full justify-between py-3 px-4 text-lg", isRTL && "flex-row-reverse")}
               aria-label={t("termsOfServiceTitle")}
               style={{ minWidth: "44px", minHeight: "44px" }}
-            > {/* ChevronRight is a directional icon, it should be mirrored in RTL */}
+            >
               {t("viewDetails")}
               <ChevronRight className={cn(
                 "h-5 w-5",
-                isRTL ? "ml-2 transform rotate-180" : "mr-2" // Rotate for RTL
+                isRTL ? "ml-2 transform rotate-180" : "mr-2"
               )} />
             </Button>
             <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-4">
@@ -175,3 +175,4 @@ export default function SettingsScreen() {
     </div>
   );
 }
+

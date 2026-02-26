@@ -1,7 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View } from 'react-native'; // Assuming React Native context for these components
-import { Mic, StopCircle } from 'lucide-react-native'; // Assuming React Native context for these icons
-import { useI18n } from '@/i18n';
+import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import { Mic, StopCircle } from 'lucide-react-native';
+import { useI18n } from '@/i18n/index';
 
 interface RecordingButtonProps {
   isRecording: boolean;
@@ -21,7 +21,7 @@ export default function RecordingButton({ isRecording, onPress, disabled = false
       accessibilityLabel={isRecording ? 'Stop recording' : 'Start recording'}
     >
       <View style={[styles.iconContainer, isRTL && styles.rtlIconContainer]}>
-        {isRecording ? ( // StopCircle is not a directional icon, no need to mirror
+        {isRecording ? (
           <StopCircle size={32} color="#FFFFFF" />
         ) : (
           <Mic size={32} color="#FFFFFF" />
@@ -49,19 +49,18 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   idleButton: {
-    backgroundColor: '#4CAF50', // Green for start
+    backgroundColor: '#4CAF50',
   },
   recordingButton: {
-    backgroundColor: '#F44336', // Red for stop
+    backgroundColor: '#F44336',
   },
   disabledButton: {
-    backgroundColor: '#B0B0B0', // Grey when disabled
+    backgroundColor: '#B0B0B0',
   },
   iconContainer: {
-    marginEnd: 10, // Use logical property for margin
+    marginEnd: 10,
   },
   rtlIconContainer: {
-    transform: [{ scaleX: -1 }], // Mirror the icon for RTL
   },
   buttonText: {
     color: '#FFFFFF',
@@ -69,3 +68,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+

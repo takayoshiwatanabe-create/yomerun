@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { getMessages, SupportedLocale, isRTL as checkIsRTL, useDeviceLocale as getDeviceLocaleFromTranslations } from './translations';
-import { I18nManager } from 'react-native'; // Import I18nManager for React Native
+import { I18nManager } from 'react-native';
 
 interface I18nContextType {
   t: (key: string, variables?: Record<string, string | number>) => string;
@@ -26,14 +26,12 @@ export function I18nProvider({ children, locale: initialLocale }: I18nProviderPr
     setMessages(newMessages);
     const newIsRTL = checkIsRTL(locale);
     setIsRTL(newIsRTL);
-    // Update I18nManager for React Native layout direction
+    // Apply RTL changes to I18nManager for React Native layout
     if (I18nManager.isRTL !== newIsRTL) {
       I18nManager.forceRTL(newIsRTL);
       I18nManager.allowRTL(newIsRTL);
-      // On web, this is handled by the `dir` attribute on the HTML tag.
-      // For React Native, a reload might be needed for full effect,
-      // but for simple text direction, forceRTL is often enough.
-      // If a full app restart is needed, it would be handled here.
+      // On web, this is handled by the `dir` attribute on the `<html>` tag in `src/app/[locale]/layout.tsx`
+      // For React Native, a reload might be needed for full effect, but forceRTL helps with immediate layout.
     }
   }, [locale]);
 
@@ -86,6 +84,4 @@ export function useI18n() {
   };
 }
 
-// Export useDeviceLocale from translations.ts
 export const useDeviceLocale = getDeviceLocaleFromTranslations;
-

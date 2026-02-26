@@ -1,5 +1,7 @@
-import OCRScreen from "@/app/[locale]/ocr.tsx"; // Correct path to the client component
+import OCRScreen from "@/app/[locale]/ocr";
+import React from "react";
  
 export default function OCRPage() {
   return <OCRScreen />;
 }
+

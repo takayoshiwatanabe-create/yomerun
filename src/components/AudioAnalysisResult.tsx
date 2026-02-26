@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'; // Assuming React Native context for these components
-import { CheckCircle, XCircle, Star } from 'lucide-react-native'; // Assuming React Native context for these icons
-import { useTranslations, useI18n } from '@/i18n';
- 
+import { View, Text, StyleSheet } from 'react-native';
+import { CheckCircle, XCircle, Star } from 'lucide-react-native';
+import { useTranslations, useI18n } from '@/i18n/index';
+
 interface AudioAnalysisResultProps {
   score: number;
   feedback: 'excellent' | 'good' | 'needs_practice';
@@ -40,12 +40,10 @@ export default function AudioAnalysisResult({ score, feedback, text }: AudioAnal
 
       <Text style={[styles.originalText, isRTL && styles.rtlOriginalText]}>{text}</Text>
 
-      {/* Example of logical properties for layout */}
       <View style={[
-        styles.actionContainer, // Use logical properties for margin/padding
+        styles.actionContainer,
         isRTL ? { flexDirection: 'row-reverse', marginStart: 10 } : { flexDirection: 'row', marginEnd: 10 }
       ]}>
-        {/* Action buttons would go here */}
       </View>
     </View>
   );
@@ -67,14 +65,14 @@ const styles = StyleSheet.create({
   rtlContainer: {
     direction: 'rtl',
     textAlign: 'right',
-  },
+  } as any,
   title: {
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 15,
     color: '#333',
   },
-  starIcon: {}, // No specific styling needed here, margin is handled by inline style
+  starIcon: {},
   scoreContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -82,12 +80,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   rtlScoreContainer: {
-    flexDirection: 'row-reverse', // Reverse order for RTL
+    flexDirection: 'row-reverse',
   },
   scoreLabel: {
     fontSize: 18,
     fontWeight: '600',
-    marginEnd: 8, // Use logical property for margin
+    marginEnd: 8,
   },
   scoreValue: {
     fontSize: 28,
@@ -102,15 +100,15 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   rtlFeedbackContainer: {
-    flexDirection: 'row-reverse', // Reverse order for RTL
+    flexDirection: 'row-reverse',
   },
   feedbackIcon: {
-    marginEnd: 8, // Use logical property for margin
+    marginEnd: 8,
   },
   feedbackText: {
     fontSize: 16,
     color: '#333',
-    flexShrink: 1, // Allow text to wrap
+    flexShrink: 1,
   },
   originalText: {
     fontSize: 16,
@@ -127,3 +125,4 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+

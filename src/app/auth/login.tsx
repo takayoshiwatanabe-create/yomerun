@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react"; // Explicitly import React
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,20 +24,17 @@ export default function LoginPage() {
     setError(null);
     setLoading(true);
 
-    // Basic validation
     if (!email || !password) {
       setError(t("validation.emptyFields"));
       setLoading(false);
       return;
     }
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     if (email === "parent@example.com" && password === "password123") {
-      // Successful login
       console.log("Login successful");
-      router.push(`/${locale}/`); // Redirect to home page
+      router.push(`/${locale}/`);
     } else {
       setError(t("error.invalidCredentials"));
     }
@@ -116,3 +113,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

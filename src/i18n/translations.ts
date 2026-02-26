@@ -1,19 +1,16 @@
 import * as Localization from 'expo-localization';
 
-// Define supported locales as per CLAUDE.md
 export const locales = ["ja", "en", "zh", "ko", "es", "fr", "de", "pt", "ar", "hi"] as const;
 export type SupportedLocale = (typeof locales)[number];
 
-// Determine if a locale is RTL
 export const isRTL = (locale: SupportedLocale) => locale === 'ar';
 
-// Function to get device locale, prioritizing supported locales
 export const useDeviceLocale = (): SupportedLocale => {
   const deviceLocale = Localization.getLocales()[0]?.languageCode;
-  if (deviceLocale && locales.includes(deviceLocale as SupportedLocale)) {
+  if (deviceLocale && (locales as readonly string[]).includes(deviceLocale)) {
     return deviceLocale as SupportedLocale;
   }
-  return 'ja'; // Default to Japanese if device locale is not supported
+  return 'ja';
 };
 
 export const translations: Record<SupportedLocale, Record<string, string>> = {
@@ -29,6 +26,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "確認",
     "common.loading": "読み込み中...",
     "common.error": "エラーが発生しました",
+    "common.home": "ホーム",
+    "common.ocr": "OCR",
+    "common.settings": "設定",
     "home.welcomeTitle": "ヨメルンへようこそ！",
     "home.welcomeMessage": "お子様の読書体験を豊かにし、自信を育むお手伝いをします。",
     "home.startButton": "始める",
@@ -92,6 +92,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "分析結果",
     "analysis.scoreLabel": "スコア",
     "analysis.feedback.excellent": "素晴らしい！完璧な読み方です！",
+    "analysis.feedback.good": "よくできました！もう少し練習するともっと良くなります！",
+    "analysis.feedback.needs_practice": "もう少し練習が必要です。頑張りましょう！",
   },
   en: {
     "common.appName": "Yomerun",
@@ -105,6 +107,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "Confirm",
     "common.loading": "Loading...",
     "common.error": "An error occurred",
+    "common.home": "Home",
+    "common.ocr": "OCR",
+    "common.settings": "Settings",
     "home.welcomeTitle": "Welcome to Yomerun!",
     "home.welcomeMessage": "Helping children enrich their reading experience and build confidence.",
     "home.startButton": "Get Started",
@@ -168,6 +173,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "Analysis Result",
     "analysis.scoreLabel": "Score",
     "analysis.feedback.excellent": "Excellent! Perfect reading!",
+    "analysis.feedback.good": "Good job! A little more practice will make it even better!",
+    "analysis.feedback.needs_practice": "Needs a bit more practice. Keep trying!",
   },
   zh: {
     "common.appName": "优米伦",
@@ -181,6 +188,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "确认",
     "common.loading": "加载中...",
     "common.error": "发生错误",
+    "common.home": "主页",
+    "common.ocr": "OCR",
+    "common.settings": "设置",
     "home.welcomeTitle": "欢迎来到优米伦！",
     "home.welcomeMessage": "帮助孩子丰富阅读体验，建立自信。",
     "home.startButton": "开始",
@@ -244,6 +254,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "分析结果",
     "analysis.scoreLabel": "分数",
     "analysis.feedback.excellent": "太棒了！完美的阅读！",
+    "analysis.feedback.good": "做得好！再多练习一下会更好！",
+    "analysis.feedback.needs_practice": "还需要多加练习。继续努力！",
   },
   ko: {
     "common.appName": "요메룬",
@@ -257,6 +269,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "확인",
     "common.loading": "로딩 중...",
     "common.error": "오류가 발생했습니다",
+    "common.home": "홈",
+    "common.ocr": "OCR",
+    "common.settings": "설정",
     "home.welcomeTitle": "요메룬에 오신 것을 환영합니다!",
     "home.welcomeMessage": "아이들의 독서 경험을 풍부하게 하고 자신감을 키울 수 있도록 돕습니다.",
     "home.startButton": "시작하기",
@@ -320,6 +335,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "분석 결과",
     "analysis.scoreLabel": "점수",
     "analysis.feedback.excellent": "훌륭합니다! 완벽한 읽기!",
+    "analysis.feedback.good": "잘했어요! 조금 더 연습하면 더 좋아질 거예요!",
+    "analysis.feedback.needs_practice": "조금 더 연습이 필요해요. 힘내세요!",
   },
   es: {
     "common.appName": "Yomerun",
@@ -333,6 +350,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "Confirmar",
     "common.loading": "Cargando...",
     "common.error": "Ocurrió un error",
+    "common.home": "Inicio",
+    "common.ocr": "OCR",
+    "common.settings": "Configuración",
     "home.welcomeTitle": "¡Bienvenido a Yomerun!",
     "home.welcomeMessage": "Ayudando a los niños a enriquecer su experiencia de lectura y a construir confianza.",
     "home.startButton": "Empezar",
@@ -396,6 +416,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "Resultado del análisis",
     "analysis.scoreLabel": "Puntuación",
     "analysis.feedback.excellent": "¡Excelente! ¡Lectura perfecta!",
+    "analysis.feedback.good": "¡Buen trabajo! ¡Un poco más de práctica lo hará aún mejor!",
+    "analysis.feedback.needs_practice": "Necesita un poco más de práctica. ¡Sigue intentándolo!",
   },
   fr: {
     "common.appName": "Yomerun",
@@ -409,6 +431,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "Confirmer",
     "common.loading": "Chargement...",
     "common.error": "Une erreur est survenue",
+    "common.home": "Accueil",
+    "common.ocr": "OCR",
+    "common.settings": "Paramètres",
     "home.welcomeTitle": "Bienvenue sur Yomerun !",
     "home.welcomeMessage": "Aider les enfants à enrichir leur expérience de lecture et à prendre confiance en eux.",
     "home.startButton": "Commencer",
@@ -472,6 +497,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "Résultat de l'analyse",
     "analysis.scoreLabel": "Score",
     "analysis.feedback.excellent": "Excellent ! Lecture parfaite !",
+    "analysis.feedback.good": "Bon travail ! Un peu plus de pratique le rendra encore meilleur !",
+    "analysis.feedback.needs_practice": "Besoin d'un peu plus de pratique. Continuez d'essayer !",
   },
   de: {
     "common.appName": "Yomerun",
@@ -485,6 +512,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "Bestätigen",
     "common.loading": "Lädt...",
     "common.error": "Ein Fehler ist aufgetreten",
+    "common.home": "Startseite",
+    "common.ocr": "OCR",
+    "common.settings": "Einstellungen",
     "home.welcomeTitle": "Willkommen bei Yomerun!",
     "home.welcomeMessage": "Helfen Sie Kindern, ihre Leseerfahrung zu bereichern und Selbstvertrauen aufzubauen.",
     "home.startButton": "Starten",
@@ -548,6 +578,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "Analyseergebnis",
     "analysis.scoreLabel": "Punktzahl",
     "analysis.feedback.excellent": "Ausgezeichnet! Perfektes Lesen!",
+    "analysis.feedback.good": "Gut gemacht! Ein bisschen mehr Übung macht es noch besser!",
+    "analysis.feedback.needs_practice": "Braucht noch etwas Übung. Bleib dran!",
   },
   pt: {
     "common.appName": "Yomerun",
@@ -561,6 +593,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "Confirmar",
     "common.loading": "Carregando...",
     "common.error": "Ocorreu um erro",
+    "common.home": "Início",
+    "common.ocr": "OCR",
+    "common.settings": "Configurações",
     "home.welcomeTitle": "Bem-vindo ao Yomerun!",
     "home.welcomeMessage": "Ajudando as crianças a enriquecer sua experiência de leitura e a construir confiança.",
     "home.startButton": "Começar",
@@ -624,6 +659,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "Resultado da Análise",
     "analysis.scoreLabel": "Pontuação",
     "analysis.feedback.excellent": "Excelente! Leitura perfeita!",
+    "analysis.feedback.good": "Bom trabalho! Um pouco mais de prática o tornará ainda melhor!",
+    "analysis.feedback.needs_practice": "Precisa de um pouco mais de prática. Continue tentando!",
   },
   ar: {
     "common.appName": "يوميرون",
@@ -637,6 +674,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "تأكيد",
     "common.loading": "جار التحميل...",
     "common.error": "حدث خطأ",
+    "common.home": "الرئيسية",
+    "common.ocr": "التعرف الضوئي على الحروف",
+    "common.settings": "الإعدادات",
     "home.welcomeTitle": "مرحبًا بك في يوميرون!",
     "home.welcomeMessage": "نساعد الأطفال على إثراء تجربتهم في القراءة وبناء الثقة بالنفس.",
     "home.startButton": "ابدأ",
@@ -700,6 +740,8 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "نتيجة التحليل",
     "analysis.scoreLabel": "النتيجة",
     "analysis.feedback.excellent": "ممتاز! قراءة مثالية!",
+    "analysis.feedback.good": "أحسنت! مع قليل من الممارسة سيصبح أفضل!",
+    "analysis.feedback.needs_practice": "تحتاج إلى مزيد من الممارسة. استمر في المحاولة!",
   },
   hi: {
     "common.appName": "योमेरुन",
@@ -713,6 +755,9 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "common.confirm": "पुष्टि करें",
     "common.loading": "लोड हो रहा है...",
     "common.error": "एक त्रुटि हुई",
+    "common.home": "होम",
+    "common.ocr": "ओसीआर",
+    "common.settings": "सेटिंग्स",
     "home.welcomeTitle": "योमेरुन में आपका स्वागत है!",
     "home.welcomeMessage": "बच्चों को उनके पढ़ने के अनुभव को समृद्ध करने और आत्मविश्वास बनाने में मदद करना।",
     "home.startButton": "शुरू करें",
@@ -776,7 +821,10 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     "analysis.resultTitle": "विश्लेषण परिणाम",
     "analysis.scoreLabel": "स्कोर",
     "analysis.feedback.excellent": "उत्कृष्ट! उत्तम पठन!",
+    "analysis.feedback.good": "अच्छा काम! थोड़ा और अभ्यास इसे और बेहतर बना देगा!",
+    "analysis.feedback.needs_practice": "थोड़ा और अभ्यास की आवश्यकता है। कोशिश करते रहें!",
   },
 };
 
 export const getMessages = (locale: SupportedLocale) => translations[locale];
+

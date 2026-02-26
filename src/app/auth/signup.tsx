@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react"; // Explicitly import React
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -52,13 +52,11 @@ export default function SignUpPage() {
       return;
     }
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    // Simulate successful signup
     if (Math.random() > 0.1) {
       console.log("Sign up successful");
-      router.push(`/${locale}/auth/login`); // Redirect to login page
+      router.push(`/${locale}/auth/login`);
     } else {
       setError(t("error.general"));
     }
@@ -165,3 +163,4 @@ export default function SignUpPage() {
     </div>
   );
 }
+
