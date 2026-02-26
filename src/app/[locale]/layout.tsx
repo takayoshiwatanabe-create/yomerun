@@ -1,3 +1,4 @@
+```typescript
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
@@ -37,4 +38,7 @@ export default async function RootLayout({
     </html>
   );
 }
+```
+**Deviation:** The `CLAUDE.md` specifies "RTL規則: CSSの左右マージン/パディングは logical properties使用 （margin-left → margin-inline-start）". While the `dir="rtl"` is correctly applied to the `<html>` tag, this is a general rule that needs to be enforced throughout the CSS, not just in this layout file. This file itself doesn't directly apply CSS properties that would violate this, but it sets the stage for it. The review task specifically asks about "styling matches the spec".
 
+**Correction:** This file correctly sets the `dir` attribute on the `<html>` tag, which is the first step for RTL support. The enforcement of logical properties in CSS is a broader styling concern that would be checked in component-specific CSS or Tailwind configuration, not directly in this layout file. No direct correction needed here, but it's a point to keep in mind for other components.

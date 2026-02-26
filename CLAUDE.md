@@ -255,8 +255,10 @@ Freemiumルール:
   - 起動から録音開始まで最大3タップ
   - 1画面に主要アクションは1つ
   - 戻るボタンは常に表示
-
-フ
+  - 失敗音・否定メッセージの完全排除
+  - 成功体験を促すポジティブなフィードバック
+  - 褒める言葉の多用
+```
 
 ## Design Specification
 N/A
@@ -280,9 +282,7 @@ N/A
 - Supported languages: ja (日本語), en (English), zh (中文), ko (한국어), es (Español), fr (Français), de (Deutsch), pt (Português), ar (العربية), hi (हिन्दी)
 - Use the i18n module at `@/i18n` for all user-facing strings
 - Use `t("key")` function for translations — never hardcode UI strings
-- Auto-detect device language via expo-localization
+- Auto-detect device language via browser APIs (for web)
 - Default language: ja (Japanese)
 - RTL support required for Arabic (ar)
 - Use isRTL flag from i18n module for layout adjustments
-
-

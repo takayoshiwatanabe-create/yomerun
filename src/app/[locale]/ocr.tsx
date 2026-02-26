@@ -133,7 +133,7 @@ export default function OCRScreen() {
         return (
           <>
             <XCircle className="h-12 w-12 text-red-500 mb-4" />
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-4 text-center">
+            <p className="text-lg text-red-600 dark:text-red-400 mb-4 text-center">
               {t("ocrError")}
             </p>
             <Button
@@ -207,4 +207,3 @@ export default function OCRScreen() {
     </div>
   );
 }
-

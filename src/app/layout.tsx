@@ -1,3 +1,4 @@
+```typescript
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../global.css"; // Import global CSS for Tailwind
@@ -26,4 +27,5 @@ export default function RootLayout({
     </html>
   );
 }
-
+```
+No deviations. This root layout correctly wraps the locale-specific layout and sets a default `lang` and `dir` for the root HTML tag, as expected in a Next.js App Router setup with `next-intl`.

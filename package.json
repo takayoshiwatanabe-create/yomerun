@@ -45,8 +45,11 @@
     "typescript": "^5.5.3",
     "vitest": "^1.6.0"
   },
+  "overrides": {
+    "react": "npm:react@19.0.0-rc-f994737d14-20240704",
+    "react-dom": "npm:react-dom@19.0.0-rc-f994737d14-20240704"
+  },
   "volta": {
     "node": "20.11.0"
   }
 }
-

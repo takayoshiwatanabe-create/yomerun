@@ -50,8 +50,9 @@ export function RecordingButton({
         <>
           <StopCircle className="h-10 w-10 text-white animate-pulse" />
           <span className="sr-only">{t("stopRecording")}</span>
-          {/* The animate-ping-slow class needs to be defined in CSS or Tailwind config */}
-          <div className="absolute inset-0 rounded-full border-4 border-red-300 animate-ping-slow" />
+          {/* The animate-ping-slow class needs to be defined in CSS or Tailwind config for the animation to work. */}
+          {/* For now, assuming animate-ping is sufficient or animate-ping-slow will be defined. */}
+          <div className="absolute inset-0 rounded-full border-4 border-red-300 animate-ping" />
         </>
       ) : (
         <>
@@ -62,4 +63,3 @@ export function RecordingButton({
     </Button>
   );
 }
-
