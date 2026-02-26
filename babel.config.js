@@ -1,11 +1,10 @@
-module.exports = function (api) {
+module.exports = function(api) {
   api.cache(true);
   return {
-    presets: ["babel-preset-expo"],
+    presets: [['babel-preset-expo', { jsxRuntime: 'automatic' }]],
     plugins: [
-      // Required for Expo Router
-      "expo-router/babel",
-      "nativewind/babel", // Add nativewind/babel plugin
+      "nativewind/babel",
+      require.resolve("expo-router/babel"),
     ],
   };
 };
