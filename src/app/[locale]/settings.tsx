@@ -29,6 +29,14 @@ export default function SettingsScreen() {
     console.log("Logging out...");
   };
 
+  const handleSubscriptionManagement = () => {
+    // IMPORTANT: For App Store/Google Play, this should redirect to an in-app purchase (IAP) flow
+    // or a page explaining how to manage subscriptions via the respective app store.
+    // Direct external payment links are not allowed.
+    console.log("Manage Subscription clicked. Implement IAP or App Store subscription management.");
+    // Example for web: window.open("https://billing.stripe.com/p/login/YOUR_STRIPE_PORTAL_LINK", "_blank");
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
       <Card className="w-full max-w-md bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6">
@@ -66,6 +74,19 @@ export default function SettingsScreen() {
               style={{ minWidth: "44px", minHeight: "44px" }}
             >
               {t("manageProfileTitle")}
+              <ChevronRight className={cn(
+                "h-5 w-5",
+                isRTL ? "ml-2 transform rotate-180" : "mr-2"
+              )} />
+            </Button>
+            <Button
+              variant="outline"
+              onClick={handleSubscriptionManagement}
+              className={cn("w-full justify-between py-3 px-4 text-lg", isRTL && "flex-row-reverse")}
+              aria-label={t("manageSubscriptionTitle")}
+              style={{ minWidth: "44px", minHeight: "44px" }}
+            >
+              {t("manageSubscriptionTitle")}
               <ChevronRight className={cn(
                 "h-5 w-5",
                 isRTL ? "ml-2 transform rotate-180" : "mr-2"
@@ -175,5 +196,3 @@ export default function SettingsScreen() {
     </div>
   );
 }
-
-
