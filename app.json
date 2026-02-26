@@ -3,25 +3,38 @@
     "name": "Yomerun",
     "slug": "Yomerun",
     "scheme": "yomerun",
+    "owner": "zerocode",
+    "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app_icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFFBEB"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zerocode.Yomerun",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Yomerunでは、お子様の音声認識と発音練習のためにマイクへのアクセスが必要です。",
+        "NSPhotoLibraryUsageDescription": "Yomerunでは、お子様が撮影した写真やギャラリーの画像から文字を読み取るために写真ライブラリへのアクセスが必要です。",
+        "NSCameraUsageDescription": "Yomerunでは、お子様が本やプリントの写真を撮り、文字を読み取るためにカメラへのアクセスが必要です。"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.zerocode.Yomerun",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Yomerun（ヨメルン）は、お子様の「読みたい」気持ちを育むための革新的な学習アプリです。本やプリントの文字をカメラで読み取り、AIが音声で読み上げ、お子様の発音をリアルタイムで分析します。読み聞かせのサポートから、発音練習、読解力向上まで、お子様の成長を多角的に支援。ゲーム感覚で楽しく学べる機能と、保護者の方が安心して見守れるプライバシー保護機能を両立。すべての子どもが自信を持って言葉を表現できる未来をYomerunが創造します。",
+    "privacyPolicyUrl": "https://www.yomerun.com/privacy"
   }
 }
