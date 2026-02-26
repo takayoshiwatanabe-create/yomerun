@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { t } from "@/i18n"; // Removed 'isRTL' as it's not directly used in JSX for global layout
+import { t, isRTL } from "@/i18n"; // Import isRTL for layout adjustments
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for Tailwind
 
@@ -10,13 +10,7 @@ import "../global.css"; // Import global CSS for Tailwind
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
-      {/* For RTL layout, typically flexbox properties like `flexDirection: isRTL ? 'row-reverse' : 'row'`
-          or `textAlign: isRTL ? 'right' : 'left'` are used on Text components.
-          For a global layout direction, you might need a custom component or a library.
-          For now, we'll remove the non-standard 'dir' prop to fix the build.
-          If RTL layout is critical, a more robust solution is needed.
-      */}
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }} collapsable={false}> {/* Add collapsable={false} to ensure dir prop works */}
         <Stack>
           <Stack.Screen name="index" options={{ title: t("common.appName") }} />
           {/* Add other screens here as they are created */}

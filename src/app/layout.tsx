@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import "../global.css"; // Import global CSS for Tailwind
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,17 +14,17 @@ export const metadata: Metadata = {
 
 const locales = ["ja", "en", "zh", "ko", "es", "fr", "de", "pt", "ar", "hi"];
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { locale },
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  if (!locales.includes(locale as any)) notFound();
+  // Type assertion for locale to ensure it's treated as a string for includes check
+  if (!locales.includes(locale)) notFound(); // Removed 'as string' as locale is already string type
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const messages = useMessages();
+  const messages = await getMessages({ locale }); // Pass locale to getMessages
 
   const isRTL = locale === "ar"; // Determine RTL based on locale
 

@@ -7,8 +7,9 @@ function getLanguage(): Language {
   try {
     const locales = Localization.getLocales();
     // Ensure locales[0] exists before accessing languageCode
-    const deviceLang = locales[0]?.languageCode ?? "ja";
-    if (SUPPORTED.includes(deviceLang as Language)) {
+    const deviceLang = locales[0]?.languageCode;
+    // Check if deviceLang is a string and is one of the supported languages
+    if (typeof deviceLang === 'string' && SUPPORTED.includes(deviceLang as Language)) {
       return deviceLang as Language;
     }
     return "ja";
@@ -32,4 +33,3 @@ export function t(key: string, vars?: Record<string, string | number>): string {
   }
   return text;
 }
-
