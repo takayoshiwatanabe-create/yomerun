@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   rtlContainer: {
     direction: 'rtl',
     textAlign: 'right',
-  } as any,
+  } as any, // Cast to any to satisfy type checker for `direction`
   title: {
     fontSize: 22,
     fontWeight: 'bold',
@@ -125,4 +125,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
 

@@ -5,3 +5,4 @@ export default function OCRPage() {
   return <OCRScreen />;
 }
 
+

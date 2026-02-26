@@ -3,7 +3,7 @@ import { Stack } from 'expo-router';
 import { I18nProvider, useDeviceLocale, SupportedLocale } from '@/i18n/index';
 import Header from '@/components/Header';
 import TabBar from '@/components/TabBar';
-import { usePathname } from 'expo-router'; // Changed from 'next/navigation' to 'expo-router'
+import { usePathname } from 'expo-router';
 import { View, StyleSheet } from 'react-native';
 
 export default function RootLayout() {
@@ -22,7 +22,7 @@ export default function RootLayout() {
           {/* The root path for Expo Router is typically just the folder name, e.g., `(app)` or `index` */}
           {/* For a locale-prefixed structure, the entry point would be `[locale]/index.tsx` or similar */}
           {/* The redirect is handled by the `[locale]/index.tsx` or `[locale]/page.tsx` */}
-          <Stack.Screen name="[locale]/page" redirect={true} /> {/* This should point to the actual entry page */}
+          <Stack.Screen name="[locale]/page" /> {/* This should point to the actual entry page */}
           <Stack.Screen name="[locale]/ocr/page" />
           <Stack.Screen name="[locale]/settings/page" />
           <Stack.Screen name="auth/login" options={{ headerShown: false }} />
@@ -39,3 +39,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+

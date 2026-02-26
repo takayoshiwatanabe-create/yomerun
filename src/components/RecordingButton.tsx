@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import { Mic, StopCircle } from 'lucide-react-native';
-import { useI18n } from '@/i18n/index';
+import { useI18n, useTranslations } from '@/i18n/index'; // Import useTranslations
 
 interface RecordingButtonProps {
   isRecording: boolean;
@@ -11,6 +11,7 @@ interface RecordingButtonProps {
 
 export default function RecordingButton({ isRecording, onPress, disabled = false }: RecordingButtonProps) {
   const { isRTL } = useI18n();
+  const t = useTranslations('common'); // Use common translations for button text
 
   return (
     <TouchableOpacity
@@ -18,7 +19,7 @@ export default function RecordingButton({ isRecording, onPress, disabled = false
       onPress={onPress}
       disabled={disabled}
       accessibilityRole="button"
-      accessibilityLabel={isRecording ? 'Stop recording' : 'Start recording'}
+      accessibilityLabel={isRecording ? t('stopRecording') : t('startRecording')} // Use translations
     >
       <View style={[styles.iconContainer, isRTL && styles.rtlIconContainer]}>
         {isRecording ? (
@@ -28,7 +29,7 @@ export default function RecordingButton({ isRecording, onPress, disabled = false
         )}
       </View>
       <Text style={styles.buttonText}>
-        {isRecording ? 'Stop Recording' : 'Start Recording'}
+        {isRecording ? t('stopRecording') : t('startRecording')} {/* Use translations */}
       </Text>
     </TouchableOpacity>
   );
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     marginEnd: 10,
   },
   rtlIconContainer: {
+    // No specific RTL styling needed here for icons unless they are directional
   },
   buttonText: {
     color: '#FFFFFF',
@@ -68,4 +70,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
 

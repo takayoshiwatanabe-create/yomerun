@@ -23,8 +23,6 @@ html[dir="ltr"] body {
   These automatically adjust based on `direction` or `writing-mode`.
   Tailwind CSS v4 is expected to handle this more natively,
   but for explicit cases or older versions, these can be useful.
-*/
-/*
   Tailwind CSS v4 uses logical properties by default for margin/padding.
   Explicit classes like `margin-inline-start` are generally not needed
   if using Tailwind's `ms-*`, `me-*`, `ps-*`, `pe-*` utilities.
@@ -88,3 +86,5 @@ html[dir="rtl"] {
   scrollbar-gutter: stable both-edges;
 }
 */
+
+

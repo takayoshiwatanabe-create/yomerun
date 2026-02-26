@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl"; // useLocale is not needed in layout.tsx as locale is from params
+import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import "../../global.css"; // Import global CSS for Tailwind
-import { translations } from "@/i18n/translations"; // Import translations to get locale list
-import React from "react"; // Explicitly import React
+import "../../global.css";
+import { locales as supportedLocales } from "@/i18n/translations"; // Corrected import path and name
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 // Define supported locales as per CLAUDE.md
-const locales = ["ja", "en", "zh", "ko", "es", "fr", "de", "pt", "ar", "hi"];
+const locales = supportedLocales; // Use the imported locales
 
 export default async function LocaleLayout({
   children,
@@ -25,7 +25,7 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale)) notFound();
+  if (!(locales as readonly string[]).includes(locale)) notFound(); // Cast to readonly string[] for includes check
 
   // Providing all messages to the client
   // side is the easiest way to get started
@@ -44,3 +44,4 @@ export default async function LocaleLayout({
     </html>
   );
 }
+

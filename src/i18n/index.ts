@@ -85,3 +85,5 @@ export function useI18n() {
 }
 
 export const useDeviceLocale = getDeviceLocaleFromTranslations;
+
+
