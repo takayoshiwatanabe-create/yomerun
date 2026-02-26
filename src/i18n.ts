@@ -17,3 +17,4 @@ export default getRequestConfig(async ({ locale }) => {
 });
 ```
 No deviations. This file correctly sets up `next-intl` for server-side message loading, validates locales, and imports translations from the specified path.
+
