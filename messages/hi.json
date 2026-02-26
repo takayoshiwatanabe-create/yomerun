@@ -1,9 +1,23 @@
 {
-  "common": {
-    "appName": "योमेरुन"
-  },
-  "home": {
-    "welcomeTitle": "योमेरुन में आपका स्वागत है!",
-    "home.welcomeSubtitle": "जोर से पढ़कर बच्चों की अभिव्यंजक शक्ति को बढ़ावा देना।"
-  }
+  "common.appName": "योमेरुन",
+  "home.welcomeTitle": "योमेरुन में आपका स्वागत है!",
+  "home.welcomeSubtitle": "जोर से पढ़कर बच्चों की अभिव्यंजक शक्ति को बढ़ावा देना।",
+  "recording.startRecording": "रिकॉर्डिंग शुरू करें",
+  "recording.stopRecording": "रिकॉर्डिंग बंद करें",
+  "ocr.ocrScreenTitle": "पाठ पढ़ें!",
+  "ocr.ocrScreenSubtitle": "पाठ निकालने के लिए एक किताब के पृष्ठ की तस्वीर लें।",
+  "ocr.selectImagePrompt": "किताब की तस्वीर लेने के लिए टैप करें या अपनी गैलरी से चुनें।",
+  "ocr.imageSelected": "छवि चयनित। अब आप OCR शुरू कर सकते हैं।",
+  "ocr.startOcr": "पाठ पढ़ें",
+  "ocr.uploadingImage": "छवि अपलोड हो रही है...",
+  "ocr.processingImage": "पाठ संसाधित हो रहा है...",
+  "ocr.ocrCompleted": "पाठ पढ़ना पूरा हुआ!",
+  "ocr.ocrResultTitle": "निकाला गया पाठ",
+  "ocr.sampleOcrText": "यह नमूना पाठ है।\nछवि से निकाला गया पाठ यहां दिखाई देगा।",
+  "ocr.ocrError": "क्षमा करें, पाठ निकालने में विफल रहा। कृपया पुनः प्रयास करें!",
+  "ocr.tryAgain": "पुनः प्रयास करें",
+  "ocr.processAnotherImage": "एक और छवि संसाधित करें",
+  "ocr.selectImage": "छवि चुनें",
+  "ocr.noImageSelected": "कोई छवि चयनित नहीं",
+  "ocr.selectedImageAlt": "चयनित छवि"
 }

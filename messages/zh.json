@@ -1,9 +1,23 @@
 {
-  "common": {
-    "appName": "Yomerun"
-  },
-  "home": {
-    "welcomeTitle": "欢迎来到Yomerun！",
-    "welcomeSubtitle": "通过朗读培养孩子的表达能力。"
-  }
+  "common.appName": "Yomerun",
+  "home.welcomeTitle": "欢迎来到Yomerun！",
+  "home.welcomeSubtitle": "通过朗读培养孩子的表达能力。",
+  "recording.startRecording": "开始录音",
+  "recording.stopRecording": "停止录音",
+  "ocr.ocrScreenTitle": "识别文字！",
+  "ocr.ocrScreenSubtitle": "拍摄书页以提取文字。",
+  "ocr.selectImagePrompt": "点击拍摄书本照片或从相册中选择。",
+  "ocr.imageSelected": "图片已选择。现在可以开始文字识别。",
+  "ocr.startOcr": "识别文字",
+  "ocr.uploadingImage": "正在上传图片...",
+  "ocr.processingImage": "正在识别文字...",
+  "ocr.ocrCompleted": "文字识别完成！",
+  "ocr.ocrResultTitle": "识别出的文字",
+  "ocr.sampleOcrText": "这是示例文本。\n从图片中识别出的文字将显示在此处。",
+  "ocr.ocrError": "抱歉，文字识别失败了。请再试一次！",
+  "ocr.tryAgain": "再试一次",
+  "ocr.processAnotherImage": "识别另一张图片",
+  "ocr.selectImage": "选择图片",
+  "ocr.noImageSelected": "未选择图片",
+  "ocr.selectedImageAlt": "已选择的图片"
 }

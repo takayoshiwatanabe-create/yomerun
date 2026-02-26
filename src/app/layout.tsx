@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 import "../global.css"; // Import global CSS for Tailwind
 
 const inter = Inter({ subsets: ["latin"] });
@@ -12,29 +9,21 @@ export const metadata: Metadata = {
   description: "Fostering children's expressive power through reading aloud.",
 };
 
-const locales = ["ja", "en", "zh", "ko", "es", "fr", "de", "pt", "ar", "hi"];
+// This `src/app/layout.tsx` is for the root layout, which should not have `params: { locale }`.
+// The `[locale]/layout.tsx` handles the locale-specific layout.
+// The root layout should wrap the `[locale]` segment.
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
 }>) {
-  // Type assertion for locale to ensure it's treated as a string for includes check
-  if (!locales.includes(locale)) notFound(); // Removed 'as string' as locale is already string type
-
-  const messages = await getMessages({ locale }); // Pass locale to getMessages
-
-  const isRTL = locale === "ar"; // Determine RTL based on locale
-
   return (
-    <html lang={locale} dir={isRTL ? "rtl" : "ltr"}>
+    <html lang="ja" dir="ltr"> {/* Default language for the root HTML tag */}
       <body className={inter.className}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        {children}
       </body>
     </html>
   );
 }
+

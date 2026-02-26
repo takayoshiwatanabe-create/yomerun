@@ -10,7 +10,7 @@ import "../global.css"; // Import global CSS for Tailwind
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
-      <View style={{ flex: 1 }} collapsable={false}> {/* Add collapsable={false} to ensure dir prop works */}
+      <View style={{ flex: 1 }} collapsable={false} dir={isRTL ? "rtl" : "ltr"}> {/* Add collapsable={false} to ensure dir prop works */}
         <Stack>
           <Stack.Screen name="index" options={{ title: t("common.appName") }} />
           {/* Add other screens here as they are created */}
@@ -20,3 +20,4 @@ export default function RootLayout() {
     </SafeAreaProvider>
   );
 }
+

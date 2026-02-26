@@ -46,7 +46,7 @@ export const translations: Record<Language, Record<string, string>> = {
   de: {
     "common.appName": "Yomerun",
     "home.welcomeTitle": "Willkommen bei Yomerun!",
-    "home.welcomeSubtitle": "Förderung der Ausdrucksfähigkeit von Kindern durch lautes Lesen.",
+    "home.home.welcomeSubtitle": "Förderung der Ausdrucksfähigkeit von Kindern durch lautes Lesen.",
     "recording.startRecording": "Aufnahme starten",
     "recording.stopRecording": "Aufnahme stoppen",
   },
@@ -72,3 +72,4 @@ export const translations: Record<Language, Record<string, string>> = {
     "recording.stopRecording": "रिकॉर्डिंग बंद करें",
   },
 };
+

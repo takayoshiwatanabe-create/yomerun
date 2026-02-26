@@ -1,9 +1,23 @@
 {
-  "common": {
-    "appName": "ヨメルン"
-  },
-  "home": {
-    "welcomeTitle": "ヨメルンへようこそ！",
-    "welcomeSubtitle": "音読を通して、子どもの表現力を育みます。"
-  }
+  "common.appName": "ヨメルン",
+  "home.welcomeTitle": "ヨメルンへようこそ！",
+  "home.welcomeSubtitle": "音読を通して、子どもの表現力を育みます。",
+  "recording.startRecording": "録音を開始",
+  "recording.stopRecording": "録音を停止",
+  "ocr.ocrScreenTitle": "文字を読み取ろう！",
+  "ocr.ocrScreenSubtitle": "本のページを撮影して、文字を読み取ります。",
+  "ocr.selectImagePrompt": "画像をタップして本を撮影するか、ギャラリーから選択してください。",
+  "ocr.imageSelected": "画像が選択されました。読み取りを開始できます。",
+  "ocr.startOcr": "文字を読み取る",
+  "ocr.uploadingImage": "画像をアップロード中...",
+  "ocr.processingImage": "文字を読み取り中...",
+  "ocr.ocrCompleted": "文字の読み取りが完了しました！",
+  "ocr.ocrResultTitle": "読み取った文字",
+  "ocr.sampleOcrText": "これはサンプルテキストです。\n画像から読み取られた文字がここに表示されます。",
+  "ocr.ocrError": "ごめんなさい、文字の読み取りに失敗しました。もう一度試してみてね！",
+  "ocr.tryAgain": "もう一度試す",
+  "ocr.processAnotherImage": "別の画像を読み取る",
+  "ocr.selectImage": "画像を選択",
+  "ocr.noImageSelected": "画像が選択されていません",
+  "ocr.selectedImageAlt": "選択された画像"
 }

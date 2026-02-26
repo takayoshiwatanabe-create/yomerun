@@ -1,9 +1,23 @@
 {
-  "common": {
-    "appName": "يوميرون"
-  },
-  "home": {
-    "welcomeTitle": "أهلاً بك في يوميرون!",
-    "welcomeSubtitle": "ننمي قدرة الأطفال التعبيرية من خلال القراءة بصوت عالٍ."
-  }
+  "common.appName": "يوميرون",
+  "home.welcomeTitle": "أهلاً بك في يوميرون!",
+  "home.welcomeSubtitle": "ننمي قدرة الأطفال التعبيرية من خلال القراءة بصوت عالٍ.",
+  "recording.startRecording": "بدء التسجيل",
+  "recording.stopRecording": "إيقاف التسجيل",
+  "ocr.ocrScreenTitle": "اقرأ النص!",
+  "ocr.ocrScreenSubtitle": "التقط صورة لصفحة كتاب لاستخراج النص.",
+  "ocr.selectImagePrompt": "انقر لالتقاط صورة لكتاب أو اختر من معرض الصور الخاص بك.",
+  "ocr.imageSelected": "تم تحديد الصورة. يمكنك الآن بدء التعرف الضوئي على الحروف.",
+  "ocr.startOcr": "قراءة النص",
+  "ocr.uploadingImage": "جاري تحميل الصورة...",
+  "ocr.processingImage": "جاري معالجة النص...",
+  "ocr.ocrCompleted": "اكتملت قراءة النص!",
+  "ocr.ocrResultTitle": "النص المستخرج",
+  "ocr.sampleOcrText": "هذا نص عينة.\nسيظهر النص المستخرج من الصورة هنا.",
+  "ocr.ocrError": "عذرًا، فشل استخراج النص. يرجى المحاولة مرة أخرى!",
+  "ocr.tryAgain": "حاول مرة أخرى",
+  "ocr.processAnotherImage": "معالجة صورة أخرى",
+  "ocr.selectImage": "اختر صورة",
+  "ocr.noImageSelected": "لم يتم تحديد صورة",
+  "ocr.selectedImageAlt": "الصورة المحددة"
 }

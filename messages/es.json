@@ -1,9 +1,23 @@
 {
-  "common": {
-    "appName": "Yomerun"
-  },
-  "home": {
-    "welcomeTitle": "¡Bienvenido a Yomerun!",
-    "welcomeSubtitle": "Fomentando la capacidad de expresión de los niños a través de la lectura en voz alta."
-  }
+  "common.appName": "Yomerun",
+  "home.welcomeTitle": "¡Bienvenido a Yomerun!",
+  "home.welcomeSubtitle": "Fomentando la capacidad de expresión de los niños a través de la lectura en voz alta.",
+  "recording.startRecording": "Iniciar grabación",
+  "recording.stopRecording": "Detener grabación",
+  "ocr.ocrScreenTitle": "¡Lee el texto!",
+  "ocr.ocrScreenSubtitle": "Toma una foto de la página de un libro para extraer el texto.",
+  "ocr.selectImagePrompt": "Toca para tomar una foto de un libro o selecciona de tu galería.",
+  "ocr.imageSelected": "Imagen seleccionada. Ahora puedes iniciar el OCR.",
+  "ocr.startOcr": "Leer texto",
+  "ocr.uploadingImage": "Subiendo imagen...",
+  "ocr.processingImage": "Procesando texto...",
+  "ocr.ocrCompleted": "¡Lectura de texto completada!",
+  "ocr.ocrResultTitle": "Texto extraído",
+  "ocr.sampleOcrText": "Este es un texto de ejemplo.\nEl texto extraído de la imagen aparecerá aquí.",
+  "ocr.ocrError": "Lo sentimos, la extracción de texto falló. ¡Inténtalo de nuevo!",
+  "ocr.tryAgain": "Intentar de nuevo",
+  "ocr.processAnotherImage": "Procesar otra imagen",
+  "ocr.selectImage": "Seleccionar imagen",
+  "ocr.noImageSelected": "Ninguna imagen seleccionada",
+  "ocr.selectedImageAlt": "Imagen seleccionada"
 }
