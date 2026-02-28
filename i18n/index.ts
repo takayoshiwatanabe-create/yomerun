@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { getMessages, SupportedLocale, isRTL as checkIsRTL, useDeviceLocale as getDeviceLocaleFromTranslations } from './translations';
-import { I18nManager } from 'react-native'; // Import I18nManager for React Native
+// I18nManager removed for Next.js compatibility
 
 interface I18nContextType {
   t: (key: string, variables?: Record<string, string | number>) => string;
@@ -28,9 +28,9 @@ export function I18nProvider({ children, locale: initialLocale }: I18nProviderPr
     setIsRTL(newIsRTL);
     // Update I18nManager for React Native layout direction
     if (I18nManager.isRTL !== newIsRTL) {
-      I18nManager.forceRTL(newIsRTL);
-      I18nManager.allowRTL(newIsRTL);
-      // On web, this is handled by the `dir` attribute on the HTML tag.
+      // RTL handled by CSS dir attribute
+// RTL handled by CSS dir attribute
+// On web, this is handled by the `dir` attribute on the HTML tag.
       // For React Native, a reload might be needed for full effect,
       // but for simple text direction, forceRTL is often enough.
       // If a full app restart is needed, it would be handled here.
