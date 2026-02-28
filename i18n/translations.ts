@@ -1,4 +1,4 @@
-import * as Localization from 'expo-localization';
+// expo-localization removed for Next.js
 
 // Define supported locales as per CLAUDE.md
 export const locales = ["ja", "en", "zh", "ko", "es", "fr", "de", "pt", "ar", "hi"] as const;
@@ -9,7 +9,7 @@ export const isRTL = (locale: SupportedLocale) => locale === 'ar';
 
 // Function to get device locale, prioritizing supported locales
 export const useDeviceLocale = (): SupportedLocale => {
-  const deviceLocale = Localization.getLocales()[0]?.languageCode;
+  const deviceLocale = typeof navigator !== 'undefined' ? [{ languageCode: navigator.language?.split('-')[0] || 'ja' }] : [{ languageCode: 'ja' }][0]?.languageCode;
   if (deviceLocale && locales.includes(deviceLocale as SupportedLocale)) {
     return deviceLocale as SupportedLocale;
   }
